@@ -1,8 +1,7 @@
-const express=require('express');
-const userRouter=express.Router();
+const express = require('express');
+const { getUser } = require('../controllers/userController');
+const userRouter = express.Router();
 
 
-userRouter.get('/user', (req, res) => {
-   res.send('user profile')
-})
-module.exports=userRouter;
+userRouter.get('/user', getUser)
+module.exports = userRouter;
