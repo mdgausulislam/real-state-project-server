@@ -1,6 +1,24 @@
-const users = [
-    { id: 1, name: 'Md1' },
-    { id: 2, name: 'Md2' },
-    { id: 3, name: 'Md3' },
-];
-module.exports = users;
+import mongoose from "mongoose";
+
+const userSchema = new mongoose.Schema({
+    userName: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+
+}, { timestamps: true });
+
+const user = mongoose.model('user', userSchema);
+
+module.exports = user;
