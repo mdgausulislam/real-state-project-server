@@ -1,5 +1,7 @@
 
-const getUser = (req, res) => {
-   res.send('user profile')
+const test = (req, res) => {
+   res.json({
+      message: 'Api routes is working'
+   })
 }
-module.exports = { getUser };
+module.exports = { test };

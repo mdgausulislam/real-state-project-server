@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+const router = require('./routers/userRouter');
+const authRouter = require('./routers/authRoutes');
 
-const userRouter = require('./routers/userRouter');
 const app = express();
 
 
@@ -10,7 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 
-app.use(userRouter)
+app.use('/api/user', router)
+app.use('/api/auth', authRouter)
 
 app.get('/', (req, res) => {
     res.send('Server is running for the real state project')
