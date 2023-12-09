@@ -5,6 +5,6 @@ const router = express.Router();
 
 
 router.get('/test', test);
-router.post('/update/:id', verifyToken, updateUser)
+router.post('/update/:id', verifyToken, updateUser);
 
 module.exports = router;

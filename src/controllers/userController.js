@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const User = require("../models/userModel");
 const test = (req, res) => {
   res.json({
     message: "Api routes is working",
@@ -17,7 +18,7 @@ const updateUser = async (req, res, next) => {
       req.params.id,
       {
         $set: {
-          username: req.body.username,
+          userName: req.body.userName,
           email: req.body.email,
           password: req.body.password,
           avatar: req.body.avatar,
@@ -32,6 +33,6 @@ const updateUser = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
+};
 module.exports = { test, updateUser };
 
