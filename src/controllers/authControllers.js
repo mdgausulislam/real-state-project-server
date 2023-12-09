@@ -40,17 +40,19 @@ const login = async (req, res, next) => {
 
 const googleLogin = async (req, res, next) => {
   try {
-    const existingUser = await User.findOne({ email: req.body.email });
-    if (existingUser) {
-      const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET);
-      const { password: pass, ...rest } = existingUser._doc;
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+      const { password: pass, ...rest } = user._doc;
       res
-        .cookie("access-token", token, { httpOnly: true })
-        .status(200) // Changed status to 200 for successful login
+        .cookie('access_token', token, { httpOnly: true })
+        .status(200)
         .json(rest);
     } else {
-      const generatedPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
-      const hashedPassword = bcrypt.hashSync(generatedPassword, 10);
+      const generatedPassword =
+        Math.random().toString(36).slice(-8) +
+        Math.random().toString(36).slice(-8);
+      const hashedPassword = bcryptjs.hashSync(generatedPassword, 10);
       const newUser = new User({
         username:
           req.body.name.split(' ').join('').toLowerCase() +
@@ -63,8 +65,8 @@ const googleLogin = async (req, res, next) => {
       const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
       const { password: pass, ...rest } = newUser._doc;
       res
-        .cookie("access-token", token, { httpOnly: true })
-        .status(201) // Changed status to 201 for user creation
+        .cookie('access_token', token, { httpOnly: true })
+        .status(201)
         .json(rest);
     }
   } catch (error) {
@@ -72,4 +74,13 @@ const googleLogin = async (req, res, next) => {
   }
 };
 
-module.exports = { signup, login, googleLogin };
+const signOut = async (req, res, next) => {
+  try {
+    res.clearCookie('access_token');
+    res.status(200).json('User has been logged out!');
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { signup, login, googleLogin, signOut };
