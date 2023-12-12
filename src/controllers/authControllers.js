@@ -78,5 +78,4 @@ const signOut = async (req, res, next) => {
     next(error);
   }
 };
-
 module.exports = { signup, login, googleLogin, signOut };
