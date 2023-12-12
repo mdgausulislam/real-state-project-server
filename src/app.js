@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const router = require('./routers/userRouter');
 const authRouter = require('./routers/authRoutes');
+const listingRouter = require('./routers/listingRoutes');
 const cookieParser = require('cookie-parser');
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(cookieParser());
 
 app.use('/api/user', router)
 app.use('/api/auth', authRouter)
+app.use('/api/listing', listingRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is running for the real state project')
