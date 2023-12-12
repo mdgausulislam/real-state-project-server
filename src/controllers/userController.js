@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/userModel");
 const errorHandler = require("../utils/error");
+const Listing = require("../models/listingModel");
 const test = (req, res) => {
   res.json({
     message: "Api routes is working",

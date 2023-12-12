@@ -3,8 +3,6 @@ const errorHandler = require("./error");
 
 const verifyUser = (req, res, next) => {
     const token = req.cookies.access_token;
-    console.log(token);
-    console.log(process.env.JWT_SECRET);
 
     if (!token) return next(errorHandler(401, 'Unauthorized'));
 
