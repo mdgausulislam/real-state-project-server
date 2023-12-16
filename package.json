@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "echo 'Build step: No actions required'",
-    "start": "index.js",
-    "dev": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build": "npm install"
   },
   "keywords": [],
   "author": "",
