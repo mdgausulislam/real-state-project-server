@@ -4,9 +4,9 @@ const verifyUser = require("../utils/verifyUser");
 
 const router = express.Router();
 
-router.post('/create', verifyUser, createListing);
-router.delete('/delete/:id', verifyUser, deleteListing);
-router.post('/update/:id', verifyUser, updateListing);
+router.post('/create', createListing);
+router.delete('/delete/:id', deleteListing);
+router.post('/update/:id', updateListing);
 router.get('/get/:id', getListing);
 router.get('/get', getListings);
 
