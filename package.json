@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon api/index.js",
-    "start": "api/index.js",
+    "dev": "nodemon index.js",
+    "start": "index.js",
     "build": "npm install && npm install --prefix Client && npm run build --prefix Client"
   },
   "keywords": [],
