@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ChatBot from 'react-simple-chatbot';
-import { FaFacebookMessenger } from "react-icons/fa";
+import { FaFacebookMessenger } from 'react-icons/fa';
 
 const CustomChatbot = () => {
     const [botOpen, setBotOpen] = useState(false);
